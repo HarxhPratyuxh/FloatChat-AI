@@ -1,0 +1,11 @@
+There are mostly 2 commands for anyone to replicate:-
+1. python -m uvicorn api.main:app --reload --port 8000
+2. cd frontend 
+3. npm run dev -- --host
+
+STEP 1: Run ONCE to load 2020–2025 historical data
+python ingestion/auto_ingest_v2.py backfill
+
+STEP 2: Scheduler runs this daily for fresh data
+python ingestion/auto_ingest_v2.py daily
+

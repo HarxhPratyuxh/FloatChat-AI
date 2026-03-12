@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "lib": [
+            "ES2023"
+        ],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "allowSyntheticDefaultImports": true,
+        "strict": false,
+        "noEmit": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "*.config.js",
+        "*.config.ts"
+    ]
+}

@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 218 78% 10%;
+    --foreground: 195 100% 95%;
+
+    --card: 218 70% 12%;
+    --card-foreground: 195 100% 95%;
+
+    --popover: 218 70% 12%;
+    --popover-foreground: 195 100% 95%;
+
+    --primary: 193 100% 50%;
+    --primary-foreground: 218 78% 10%;
+
+    --secondary: 218 60% 18%;
+    --secondary-foreground: 195 100% 90%;
+
+    --muted: 218 50% 16%;
+    --muted-foreground: 200 20% 55%;
+
+    --accent: 178 100% 59%;
+    --accent-foreground: 218 78% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 40% 20%;
+    --input: 210 40% 20%;
+    --ring: 193 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* FloatChat custom tokens */
+    --ocean-deep: 218 78% 10%;
+    --ocean-mid: 207 73% 21%;
+    --ocean-glow: 193 100% 50%;
+    --ocean-aqua: 178 100% 59%;
+    --ocean-surface: 200 60% 94%;
+
+    --glass-bg: 218 60% 14%;
+    --glass-border: 210 40% 22%;
+    --glass-border-hover: 193 80% 40%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(193 100% 50%), hsl(178 100% 59%));
+    --gradient-ocean: linear-gradient(180deg, hsl(218 78% 10%) 0%, hsl(207 73% 15%) 50%, hsl(218 78% 10%) 100%);
+    --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, hsla(193, 100%, 50%, 0.15) 0%, transparent 70%);
+
+    --shadow-glow: 0 0 30px hsla(193, 100%, 50%, 0.15);
+    --shadow-glow-strong: 0 0 60px hsla(193, 100%, 50%, 0.25);
+
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+
+    --sidebar-background: 218 78% 8%;
+    --sidebar-foreground: 195 100% 90%;
+    --sidebar-primary: 193 100% 50%;
+    --sidebar-primary-foreground: 218 78% 10%;
+    --sidebar-accent: 218 50% 16%;
+    --sidebar-accent-foreground: 195 100% 90%;
+    --sidebar-border: 210 40% 20%;
+    --sidebar-ring: 193 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-display);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: hsla(218, 60%, 14%, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .glass-panel-hover:hover {
+    border-color: hsl(var(--glass-border-hover));
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
+  }
+
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-cyan {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-cyan-strong {
+    box-shadow: var(--shadow-glow-strong);
+  }
+}
+
+/* Particle animation */
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes drift {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(10px, -15px);
+  }
+
+  50% {
+    transform: translate(-5px, -30px);
+  }
+
+  75% {
+    transform: translate(15px, -15px);
+  }
+}
+
+@keyframes float-device {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes wave-flow {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes chat-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing-dot {
+
+  0%,
+  60%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes orb-drift-1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(40px, -60px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-30px, 40px) scale(0.95);
+  }
+}
+
+@keyframes orb-drift-2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(-50px, 30px) scale(1.08);
+  }
+
+  66% {
+    transform: translate(30px, -40px) scale(0.92);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Utility classes for chat ── */
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+.animate-spin {
+  animation: spin 0.7s linear infinite;
+}
