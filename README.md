@@ -176,25 +176,61 @@ npm install
 cd ..
 ```
 
-### 2. Configure `.env`
+### 2. Configure Environment Variables
+
+You need **two** env files — one for the Python backend and one for the React frontend.
+
+#### Backend — `.env` (project root)
+
+Create a `.env` file in the project root directory:
 
 ```env
-# ── Core ──────────────────────────────────────────────────────────
-DATABASE_URL=postgresql://...supabase...
-GOOGLE_API_KEY=your-gemini-api-key
+# ── Database (Supabase PostgreSQL) ────────────────────────────────
+# Get from: Supabase Dashboard → Project Settings → Database → Connection string
+DATABASE_URL=postgresql://postgres.[project-ref]:[password]@aws-[region].pooler.supabase.com:6543/postgres
 
-# ── Supabase Auth (frontend) ───────────────────────────────────────
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJ...
+# ── LLM Provider ─────────────────────────────────────────────────
+# Get from: https://aistudio.google.com/apikey
+GOOGLE_API_KEY=your-google-gemini-api-key
+
+# ── Supabase Auth (also needed server-side for SSE user context) ──
+# Get from: Supabase Dashboard → Project Settings → API
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJ...your-anon-key...
 
 # ── Blockchain (Polygon Amoy Testnet) ─────────────────────────────
+# RPC endpoint (public, no key needed)
 POLYGON_AMOY_RPC_URL=https://rpc-amoy.polygon.technology/
+# Deployed FloatChatAudit.sol contract address
 FLOATCHAT_CONTRACT_ADDRESS=0xa30Af03B660e97AEaE67f73e31f5eBEdB224Df88
-BLOCKCHAIN_WALLET_ADDRESS=0x...your wallet...
-BLOCKCHAIN_PRIVATE_KEY=...your private key (no 0x prefix)...
+# Your wallet — get testnet MATIC from https://www.alchemy.com/faucets/polygon-amoy
+BLOCKCHAIN_WALLET_ADDRESS=0x...your-wallet-address...
+BLOCKCHAIN_PRIVATE_KEY=...your-private-key-without-0x-prefix...
+
+# ── Redis (optional, for rate limiting) ───────────────────────────
+# REDIS_URL=redis://localhost:6379
 ```
 
-> 🔒 `.env` is in `.gitignore` — **never commit your private key**.
+#### Frontend — `frontend/.env.local`
+
+Create a `.env.local` file inside the `frontend/` directory:
+
+```env
+# ── Supabase Client Keys ─────────────────────────────────────────
+# Get from: Supabase Dashboard → Project Settings → API
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJ...your-anon-key...
+
+# ── Backend API URL (only needed in production) ──────────────────
+# In dev mode, Vite's proxy handles this automatically.
+# Uncomment for production deployments:
+# VITE_API_URL=http://localhost:8000
+```
+
+> [!NOTE]  
+> `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` appear in both files. The root `.env` is used by the Python backend; `frontend/.env.local` is used by Vite/React. Both must have the same values.
+
+> 🔒 Both `.env` and `frontend/.env.local` are gitignored — **never commit API keys or private keys**.
 
 ### 3. Build the FAISS Index (one-time)
 
