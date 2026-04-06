@@ -15,7 +15,7 @@ def get_llm(provider: str = "groq", model_name: str = None):
             raise ValueError("GROQ_API_KEY not found in environment")
         return ChatGroq(
             temperature=0,
-            model_name=model_name or "llama-3.3-70b-versatile",
+            model_name=model_name or "groq/compound-mini",
             groq_api_key=api_key,
             streaming=True
         )

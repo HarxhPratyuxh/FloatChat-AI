@@ -110,7 +110,7 @@ export default function LandingPage() {
             }}>
                 {/* Tag pill */}
                 <div className="badge badge-cyan animate-fade-in" style={{ padding: '5px 16px', fontSize: '0.78rem' }}>
-                    🏆 HackIndia × TECHआरंभ 2.0 — Team Argonauts
+                    🏆 HackIndia × TECHआरंभ 2.0 — Team Wavesena
                 </div>
 
                 {/* Headline */}
@@ -297,7 +297,7 @@ export default function LandingPage() {
                 flexWrap: 'wrap', gap: 12,
             }}>
                 <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-                    🌊 FloatChat · Team Argonauts · HackIndia 2026
+                    🌊 FloatChat · Team Wavesena · HackIndia 2026
                 </span>
                 <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
                     Built with ❤️ for ocean science

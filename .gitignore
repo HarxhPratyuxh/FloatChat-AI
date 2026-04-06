@@ -208,20 +208,3 @@ __marimo__/
 
 # Node modules
 node_modules/
-
-# ── FloatChat Project-Specific ──
-# Sample NetCDF data files
-data/
-
-# Scratch/debug files
-tmp_test*.txt
-
-# Root-level stray lockfile (frontend has its own)
-/package-lock.json
-
-# Old prototypes (replaced by FastAPI + React)
-main_prototype.py
-streamlit_app.py
-
-# Gemini/Antigravity agent brain
-.gemini/

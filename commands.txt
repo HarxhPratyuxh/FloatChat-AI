@@ -1,5 +1,6 @@
 There are mostly 2 commands for anyone to replicate:-
 1. python -m uvicorn api.main:app --reload --port 8000
+~terminal change~
 2. cd frontend 
 3. npm run dev -- --host
 

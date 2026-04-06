@@ -20,7 +20,7 @@ const Navbar = () => {
 
       <div className="flex gap-3 items-center">
         <a
-          href="https://github.com/Lakshya1509/FloatChat-AI"
+          href="https://github.com/HarxhPratyuxh/FloatChat-AI"
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-foreground transition-colors text-sm hidden sm:block"
